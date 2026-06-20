@@ -9,9 +9,18 @@ const styles = {
   subtitle: { color: '#2C3E50', fontSize: '14px', marginBottom: '24px', opacity: 0.7 },
   input: { width: '100%', padding: '12px 14px', marginBottom: '14px', border: '1px solid #D9DEE3', borderRadius: '8px', fontSize: '14px', boxSizing: 'border-box', outline: 'none' },
   button: { width: '100%', padding: '12px', background: '#0A2947', color: '#FFFFFF', border: 'none', borderRadius: '8px', fontWeight: 600, fontSize: '15px', cursor: 'pointer', marginTop: '8px' },
+  demo: { background: '#F4F7FA', border: '1px solid #D9DEE3', borderRadius: '8px', padding: '12px 14px', marginBottom: '18px', fontSize: '13px', color: '#2C3E50' },
+  demoTitle: { color: '#0A2947', fontWeight: 700, margin: '0 0 8px' },
+  demoLine: { margin: '4px 0' },
+  demoButton: { width: '100%', padding: '10px', background: '#DAA520', color: '#0A2947', border: 'none', borderRadius: '8px', fontWeight: 700, fontSize: '13px', cursor: 'pointer', marginTop: '10px' },
   error: { color: '#C0392B', fontSize: '13px', marginBottom: '10px' },
   footer: { marginTop: '20px', textAlign: 'center', fontSize: '13px', color: '#2C3E50' },
   link: { color: '#DAA520', fontWeight: 600, textDecoration: 'none' },
+};
+
+const adminCredentials = {
+  email: 'admin@lantrotech.com',
+  password: 'Admin@12345',
 };
 
 const Login = () => {
@@ -37,6 +46,21 @@ const Login = () => {
       <div style={styles.card}>
         <h1 style={styles.title}>Welcome back</h1>
         <p style={styles.subtitle}>Sign in to pitch and explore ideas</p>
+        <div style={styles.demo}>
+          <p style={styles.demoTitle}>Admin demo credentials</p>
+          <p style={styles.demoLine}>Email: {adminCredentials.email}</p>
+          <p style={styles.demoLine}>Password: {adminCredentials.password}</p>
+          <button
+            style={styles.demoButton}
+            type="button"
+            onClick={() => {
+              setEmail(adminCredentials.email);
+              setPassword(adminCredentials.password);
+            }}
+          >
+            Use Admin Demo
+          </button>
+        </div>
         {error && <p style={styles.error}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <input style={styles.input} type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
